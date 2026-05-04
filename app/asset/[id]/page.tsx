@@ -1,5 +1,6 @@
 import ChartHistory from "@/components/ChartHistory";
 import Link from "next/link";
+import { fetchMarket } from "@/lib/market";
 
 export default async function Detail({
   params,
@@ -8,14 +9,7 @@ export default async function Detail({
 }) {
   const { id } = await params;
 
-  const baseUrl =
-      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-
-  const res = await fetch(`${baseUrl}/api/market`, {
-    cache: "no-store",
-  });
-
-  const data = await res.json();
+  const data = await fetchMarket();
   const coin = data.find((c: any) => c.id === id);
 
   if (!coin) return <p>Not found</p>;
