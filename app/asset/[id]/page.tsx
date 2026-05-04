@@ -8,10 +8,9 @@ export default async function Detail({
 }) {
   const { id } = await params;
 
-  const res = await fetch(
-    "http://localhost:3000/api/market",
-    { cache: "no-store" }
-  );
+  const res = await fetch("/api/market", {
+    cache: "no-store",
+  });
 
   const data = await res.json();
   const coin = data.find((c: any) => c.id === id);
