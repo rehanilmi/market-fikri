@@ -8,7 +8,10 @@ export default async function Detail({
 }) {
   const { id } = await params;
 
-  const res = await fetch("/api/market", {
+  const baseUrl =
+      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
+  const res = await fetch(`${baseUrl}/api/market`, {
     cache: "no-store",
   });
 
