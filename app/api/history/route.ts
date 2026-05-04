@@ -1,8 +1,10 @@
 import { supabase } from "@/lib/supabase";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const res = await fetch(
-    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=10"
+      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=10"
   );
 
   const data = await res.json();
